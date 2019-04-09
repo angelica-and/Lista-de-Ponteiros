@@ -1,0 +1,449 @@
+﻿LISTA DE PONTEIROS
+
+Aluna: Angélica Andrade de Medeiros
+Matrícula: 2014084991
+
+_______________________________________
+
+1.
+
+A utilização de ponteiros para aplicações na engenharia é de grande importância pois permite
+acessar a memória de uma máquina de forma direta e, com isso, realizar operações utilizando
+o conteúdo dessa memória. Também é possível e importante a alocação dinâmica da memória, que
+aloca memória durante o tempo de execução do programa, fazendo esse ficar mais veloz.
+
+_______________________________________
+
+2.
+    p == &i;            = 1
+    *p - *q;            = -2
+    **&p;               = 3
+    3 - *p/(*q) + 7;    = 10
+_______________________________________
+
+3.
+
+A saída do programa será:
+4094 7 5 15 9
+	
+_______________________________________
+
+4.
+
+p = i;
+q = &j;            ilegal
+p = &*&i;
+i = (*&)j;         ilegal
+i = *&j;
+i = *&*&j;
+q = *p;            ilegal
+i = (*p)++ + *q;
+
+_______________________________________
+
+5.
+
+(a) 20
+(b) 29.0
+(c) P
+(d) e
+(e) P
+(f) e
+(g) t
+(h) 31
+(i) 45
+(j) 27
+(l) 31
+(m) 45
+(n) 27
+
+_______________________________________
+
+6.
+
+CONTADOR
+i = 0
+i = 1
+i = 2
+i = 3
+i = 4
+
+VALOR
+vet[0] = 1.1
+vet[2] = 3.3
+vet[3] = 4.4
+vet[4] = 5.5
+
+VALOR
+*(f + 0) = 1.1
+*(f + 2) = 3.3
+*(f + 3) = 4.4
+*(f + 4) = 5.5
+
+ENDEREÇO
+&vet[0] = 29FEE4
+&vet[2] = 29FEEC
+&vet[3] = 29FEF0
+&vet[4] = 29FEF4
+
+ENDEREÇO
+(f + 0) = 29FEE4
+(f + 2) = 29FEEC
+(f + 3) = 29FEF0
+(f + 4) = 29FEF4
+_______________________________________
+
+7.
+
+Seria *(pulo + 2);
+
+_______________________________________
+
+8.
+
+p = mat + 1; Expressão válida. O ponteiro está recebendo um endereço de memória.
+
+x = (*mat)++; Expressão válida. A variável int x está recebendo o valor que está na 1ª posição do vetor mat e esse valor é incrementado com o ++.
+
+_______________________________________
+
+9.
+
+1º programa: Imprime na tela os valores do vetor.
+2º programa: imprime na tela os endereços de memória do vetor.
+
+_______________________________________
+
+10.
+
+x como char:
+x+1 = 4093; x+2 = 4094; x+3 = 4095
+
+x como int:
+x+1 = 4094; x+2 = 4096; x+3 = 4098
+
+x como float:
+x+1 = 4096; x+2 = 4100; x+3 = 4104
+
+x como double:
+x+1 = 4100; x+2 = 4108; x+3 = 4116
+
+_______________________________________
+
+11.
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+	char a[4]; //1 byte
+	short b[4]; //2 bytes, fazendo o papel do int na questão
+	float c[4]; //4 bytes
+	double d[4]; //8 bytes
+
+	printf("Avançando o endereço de 1 em 1 byte no char \n");
+		for(int i=0; i<4; i++)
+		{
+			printf("Endereço de a[%d] = %d \n", i, a+i);
+		}
+
+	printf("Avançando o endereço de 2 em 2 byte no int \n");
+		for(int i=0; i<4; i++)
+		{
+			printf("Endereço de b[%d] = %d \n", i, b+i);
+		}
+
+	printf("Avançando o endereço de 4 em 4 byte no float \n");
+		for(int i=0; i<4; i++)
+		{
+			printf("Endereço de c[%d] = %d \n", i, c+i);
+		}
+
+	printf("Avançando o endereço de 8 em 8 byte no double \n");
+		for(int i=0; i<4; i++)
+		{
+			printf("Endereço de d[%d] = %d \n", i, d+i);
+		}
+	return 0;
+}
+
+_______________________________________
+
+12.
+
+(a) aloha[2] = value;	        válido
+(b) scanf("%f", &aloha);	inválido
+(c) aloha = value";		inválido
+(d) printf("%f", aloha);	válido
+(e) coisas[4][4] = aloha[3];	válido
+(f) coisas[5] = aloha;	        inválido
+(g) pf = value;		        válido
+(h) pf = aloha		        válido
+
+_______________________________________
+
+13.
+
+Segundo a pesquisa, um ponteiro para funções é um ponteiro que pode ser passado como argumento para outras funções, e essa função que foi apontada pode ser chamada a partir do seu ponteiro.
+
+#include <stdio.h>
+#include <string.h>
+	void ImprimeString (char *str, int (*func)(const char *));
+	main (void){
+
+		char String []="Testando.";
+		int (*p)(const char *);
+		p=puts;
+		ImprimeString (String, p);
+		return 0;
+	}
+	
+	void ImprimeString (char *str, int (*func)(const char *)){
+		(*func)(str);
+		func(str);
+	}
+
+Saída:
+
+Testando.
+Testando.
+
+_______________________________________
+
+14.
+
+#include <stdio.h>
+	
+#include <stdlib.h>
+
+	
+
+int main(){
+
+	float *vetor;		
+	int n, i, j, t;
+		
+
+
+		
+	printf("Quantidade de numeros: \n");
+		
+	scanf("%d", &n);
+
+
+		
+	vetor = (float*) malloc(n * sizeof(float));
+
+
+		
+	for(i = 0; i < n; i++){
+			
+		printf("Numero %d: \t", i + 1);
+			
+		scanf("%f", &vetor[i]);
+		
+	}
+
+
+		
+	for(i = 0; i < n; i++){
+			
+		for(j = 0; j < n; j++){
+				
+			if(vetor[i] < vetor[j]){
+					
+				t = vetor[i];
+					
+				vetor[i] = vetor[j];
+					
+				vetor[j] = t;
+				
+			}
+			
+		}
+		
+	}
+
+	
+	
+		
+	for(i = 0; i < n; i++){
+			
+		printf("Numero %d:\t%f\n", i, vetor[i]);
+		
+	}
+
+	
+
+	free(vetor);	
+
+	return 0;
+	
+}
+
+_______________________________________
+
+15.
+
+int compara_float(const void * a, const void * b) //compara dois elementos
+{
+	float f1, f2;
+	f1 = *((float*) a); //converte os void* para float
+	f2 = *((float*) b);
+	
+	if (f1 < f2) //compara e retorna um valor para determinada condição
+	return -1;
+	if(f1 == f2)
+	return 0;
+	
+	return 1; //será maior, caso não seja menor ou igual
+}
+
+int main()
+{
+	float *vetor;
+	int n, i, j, t;	
+
+	//determina o tamanho do vetor e faz alocação
+	printf("Quantidade de numeros: \n");
+	scanf("%d", &n);
+
+	vetor = (float*) malloc(n * sizeof(float));
+
+	//ler os valores
+	for(i = 0; i < n; i++)
+	{
+		printf("Numero %d: \t", i + 1);
+			
+		scanf("%f", &vetor[i]);
+	}
+
+	// ordenamento do vetor
+	qsort(vetor, n, sizeof(float), compara_float);
+
+	//mostra os valores ordenados
+	for(i = 0; i < n; i++){
+			
+		printf("Numero %d:\t%f\n", i, vetor[i]);
+		
+	}
+
+
+	
+	//libera memória alocada
+	free(vetor);
+
+	return 0;
+}
+
+_______________________________________
+
+16.
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int cmp(const void *x, const void *y) {
+	return (*(int *)x - *(int *)y);
+}
+
+int main(){
+    int i; int a=5; int temp;
+    int *vet = (int *) malloc(a*sizeof(int));
+    for(i=0; i<a; i++){
+	scanf("%d", &vet[i]);
+    }
+		
+    qsort( vet, a, sizeof (int), cmp);
+
+    for(i=0; i<a; i++){
+        printf("%d", vet[i]);
+    }
+
+    return 0;
+}
+
+_______________________________________
+
+17.
+
+class Timing {
+	private:
+		string function;
+		clock_t start;
+	
+	public:
+		Timing(const string &f) { 
+			start = clock();
+			function = f;
+		}
+	~Timing() {
+		clock_t total = clock() - start;
+		cout << "Tempo para a function " << function << ": (segundos) "<< double(total)/CLOCKS_PER_SEC<<endl;
+	}
+};
+
+_______________________________________
+
+18.
+
+float soma ( float a[] , float b[] , int c ) {
+	int i ;
+	float res = 0;
+		for (i=0; i<c; i++)
+			result = res + a[ i ] + b[ i ] ;
+	return result;
+}
+
+_______________________________________
+
+19.
+
+void maior ( int A[MAX][MAX] , int n, int *k, int *Line, int *Colum) {
+	int i, j;
+	for (i=0; i<n; i++) {
+		for (j=0; j<n; j++) {
+			if ( A[i][j] > *k ) {
+				*k = A[i][j];
+				*Lin = i;
+				*Col = j;
+			}
+		}
+	}
+}
+
+_______________________________________
+
+20.
+
+#include <stdio.h>
+#include <stdlib.h>
+#include "gc.h"
+
+#define tam 10000
+
+int main()
+{
+	int *vet[tam];
+	GC_INIT();
+
+	for(int i=0; i<tam; i++)
+	{
+		vet[i] = (int *) GC_MALLOC(sizeof(int));
+		*(vet[i]) = i;
+
+		for(int j=0; j<tam; j++)
+		{
+			vet[j] = (int *) GC_MALLOC(sizeof(int));
+			*(vet[j]) = -1 * i;
+		}
+
+	}
+	
+	return 0;
+}
+
+_______________________________________
+
+
